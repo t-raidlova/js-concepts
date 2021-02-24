@@ -2,12 +2,13 @@
 
 ## Table of Contents
 
-1. **[this keyword](#1-this-keyword)**
-2. **[call, apply, bind](#2-call-apply-bind)**
+1. **[This keyword](#1-this-keyword)**
+2. **[Call, apply, bind](#2-call-apply-bind)**
+3. **[Closures](#3-Closures)**
 
 ---
 
-## 1. this
+## 1. This
 
 - refers to what object is it inside of - what is the object environment
 - gives methods access to their object
@@ -25,7 +26,7 @@ const obj = {
 };
 ```
 
-## 2. call, apply, bind
+## 2. Call, apply, bind
 
 - → ways to call a function (sets the this keyword) with different context
 - difference between call() and apply() is that call() passes all arguments after the first one on to the invoked function, while apply() takes an array as its second argument
@@ -50,3 +51,27 @@ console.log(sayHi.bind(person, 21));
 
 // output: Tereza is 21 function
 ```
+
+## 3. Closures
+
+- Closure is when a function remembers its lexical scope even when the function is executed outside that lexical scope
+- → functions remember their creation environment and can reference independent variables within that environment
+- enable function factories
+- enable private data
+- memory efficient
+- encapsulation
+
+```javascript
+function makeFunc() {
+  let name = "Tereza";
+  function displayName() {
+    alert(name);
+  }
+  return displayName;
+}
+
+var myFunc = makeFunc();
+myFunc();
+```
+
+- The instance of displayName maintains a reference to its lexical environment, within which the variable name exists. For this reason, when myFunc is invoked, the variable name remains available for use
