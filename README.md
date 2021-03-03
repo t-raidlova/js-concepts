@@ -4,7 +4,8 @@
 
 1. **[This keyword](#1-this-keyword)**
 2. **[Call, apply, bind](#2-call-apply-bind)**
-3. **[Closures](#3-Closures)**
+3. **[HOF](#3-HOF)**
+4. **[Closures](#4-Closures)**
 
 ---
 
@@ -52,9 +53,40 @@ console.log(sayHi.bind(person, 21));
 // output: Tereza is 21 function
 ```
 
-## 3. Closures
+## 3. HOF
 
-- Closure is when a function remembers its lexical scope even when the function is executed outside that lexical scope
+- in JavaScript, functions are first class objects
+- this means functions can be assigned to an array or an object or they can be passed into another function
+- Higher-Order-Function is a function that takes a function as an argument and returns a function
+
+```javascript
+function manipulateArray(numbers, instructions) {
+  const newArr = [];
+
+  for (number of numbers) {
+    newArr.push(instructions(number));
+  }
+  return newArr;
+}
+
+const multiplyBy2 = (input) => input * 2;
+const result = manipulateArray([1, 2, 3], multiplyBy2);
+```
+
+```javascript
+function manipulateArray(numbers, instructions) {
+  const newArr = [];
+
+  for (let i = 0; i < numbers.length; i++) {
+    newArr.push(instructions(numbers[i]));
+  }
+  return newArr;
+}
+```
+
+## 4. Closures
+
+- closure is when a function remembers its lexical scope even when the function is executed outside that lexical scope
 - → functions remember their creation environment and can reference independent variables within that environment
 - enable function factories
 - enable private data
