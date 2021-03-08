@@ -27,6 +27,9 @@ const obj = {
 };
 ```
 
+- if the function is defined as an arrow function, the value of this is always the same as this in the parent scope
+- with arrow functions, the value of this can't be changed with call, apply or bind
+
 ## 2. Call, apply, bind
 
 - → ways to call a function (sets the this keyword) with different context
